@@ -10,6 +10,7 @@ package org.eclipse.xtext.swtbot.testing.api;
 import java.util.Arrays;
 
 import org.eclipse.swtbot.swt.finder.SWTBot;
+import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 import org.eclipse.swtbot.swt.finder.waits.Conditions;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 import org.eclipse.xtext.swtbot.testing.internal.XtextSWTBotShell;
@@ -96,7 +97,11 @@ public class PackageExplorerAPI {
 	public void deleteAllProjects() {
 		System.out.println("Delete all projects");
 		EclipseAPI.waitForBuild();
-		if (view.bot().tree().getAllItems().length == 0) {
+		try {
+			if (view.bot().tree().getAllItems().length == 0) {
+				return;
+			}
+		} catch (WidgetNotFoundException e) {
 			return;
 		}
 		refreshAllProjects(); // avoid dialog with refresh message + collapse all projects
