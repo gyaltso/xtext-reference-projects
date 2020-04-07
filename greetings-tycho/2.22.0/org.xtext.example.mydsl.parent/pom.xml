@@ -303,7 +303,7 @@
 
     <pluginRepository>
       <id>tycho-staged</id>
-      <url>https://oss.sonatype.org/content/repositories/orgeclipsetycho-1060</url>
+      <url>https://oss.sonatype.org/content/repositories/orgeclipsetycho-1062/</url>
       </pluginRepository>
 
 		<pluginRepository>
